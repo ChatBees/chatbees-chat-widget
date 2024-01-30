@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+	<link rel="stylesheet" href="chatbees_styles.css">
+</head>
+<body>
+    <!-- Your unique page content goes here -->
+    <div class="container mt-4">
+        <h2>Hello ChatBees</h2>
+    </div>
+
+	<!-- Floating button -->
+    <div class="chatbees-float-btn" id="chatbeesFloatBtn">
+	  <img src="chatbees_chaticon.png" alt="Chat" class="chatbees-chaticon">
+	</div>
+
+	<!-- Chat Popup -->
+    <div class="chatbees-popup" id="chatbeesPopup">
+	  <div class="chatbees-header">
+		<div class="chatbees-left-section">
+		  <img src="chatbees_logo_favicon.svg" alt="Chat Logo" class="chatbees-logo">
+		  <span><strong>ChatBees</strong></span>
+    	</div>
+	    <div class="chatbees-right-section">
+    	  <img src="chatbees_refresh_icon.png" alt="Refresh" class="chatbees-refresh-icon" onclick="chatbeesClearChat()">
+      	  <span class="chatbees-close" onclick="chatbeesClosePopup()">×</span>
+    	</div>
+      </div>
+      <div class="chatbees-chat-area" id="chatbeesChatArea">
+      </div>
+      <div class="chatbees-user-input-area">
+		<textarea id="chatbeesUserInput" placeholder="Type your message..."></textarea>
+		<!-- Please replace the collectionName with your collection. -->
+		<img src="chatbees_send_icon.svg" alt="Send" class="chatbees-send-icon" onclick="chatbeesSendMessage('collectionName')">
+      </div>
+    </div>
+
+    <script src="chatbees_script.js"></script>
+</body>
+</html>
+

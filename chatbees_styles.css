@@ -1,0 +1,136 @@
+/* Styles for the chat popup and floating button */
+/* You can adjust these styles as needed for your design */
+
+  .chatbees-float-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px; /* Adjust width as needed */
+    height: 60px; /* Adjust height as needed */
+    border-radius: 50%; /* Create a circle */
+    /*background-color: #4CAF50; /* Adjust background color as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+  }
+
+  .chatbees-chaticon {
+    width: 60px; /* Adjust icon size as needed */
+    height: 60px; /* Adjust icon size as needed */
+  }
+
+  .chatbees-popup {
+    display: none; /* not show chat-popup when page loads */
+    bottom: 20px; /* Align the popup to the bottom */
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    right: 10px;
+    width: 400px; /* Adjust width as needed */
+    height: 600px; /* Adjust height as needed */
+    overflow: auto; /* Enable scrolling if content exceeds dimensions */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+  }
+
+  .chatbees-header {
+    display: flex;
+    /*background-color: #b3d9ff; /* Light blue background color */
+    justify-content: space-between;
+    align-items: center;
+	border-top-left-radius: 5px; /* Ensure consistent border-radius */
+    border-top-right-radius: 5px; /* Ensure consistent border-radius */
+    margin-bottom: 10px;
+  }
+  .chatbees-left-section {
+    flex: 1; /* Take remaining space */
+    display: flex;
+    align-items: center;
+  }
+  .chatbees-logo {
+    width: 40px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+  }
+  .chatbees-right-section {
+    display: flex;
+    align-items: center;
+  }
+  .chatbees-refresh-icon {
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+    margin-right: 5px; /* Add margin to create space between the refresh icon and close span */
+    cursor: pointer;
+  }
+
+  .chatbees-close {
+    cursor: pointer;
+    font-size: 25px;
+  }
+
+  .chatbees-chat-area {
+    flex: 1;
+    padding: 10px;
+    background: #fff;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .chatbees-user-input-area {
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px; /* Adjust as needed */
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  .chatbees-user-input-area textarea {
+    width: 100%;
+    resize: none; /* Disable textarea resizing */
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  #chatbeesUserInput {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+
+  .chatbees-send-icon {
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  .chatbees-message {
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    max-width: 70%;
+  }
+  .chatbees-bot {
+    background: #eee;
+    align-self: flex-start;
+  }
+  .chatbees-user {
+    background: #9b59b6;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto; /* Aligns to the right */
+  }
+
