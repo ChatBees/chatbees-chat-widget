@@ -35,8 +35,10 @@
       </div>
       <div class="chatbees-user-input-area">
 		<textarea id="chatbeesUserInput" placeholder="Type your message..."></textarea>
-		<!-- Please replace the collectionName with your collection. -->
-		<img src="chatbees_send_icon.svg" alt="Send" class="chatbees-send-icon" onclick="chatbeesSendMessage('collectionName')">
+		<!-- Please replace the chatbeesAccountID and chatbeesCollectionName with your account id and collection name. -->
+		<input type="hidden" id="chatbeesAccountID" value="public">
+		<input type="hidden" id="chatbeesCollectionName" value="collectionName">
+		<img src="chatbees_send_icon.svg" alt="Send" class="chatbees-send-icon" onclick="chatbeesSendMessage()">
       </div>
     </div>
 

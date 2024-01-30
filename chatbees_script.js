@@ -28,13 +28,17 @@ function chatbeesClosePopup() {
   historyMessages = [];
 }
 
-// Function to send message to REST service
-function chatbeesSendMessage(collectionName) {
+// Function to send question to ChatBees service
+function chatbeesSendMessage() {
   const userInput = document.getElementById('chatbeesUserInput').value.trim();
 
   if (userInput == "") {
     return;
   }
+
+  const aid = document.getElementById('chatbeesAccountID').value.trim();
+  const collectionName = document.getElementById('chatbeesCollectionName').value.trim();
+  console.log(aid, collectionName);
   
   const chatArea = document.getElementById('chatbeesChatArea');
   // Display user's message
@@ -65,7 +69,7 @@ function chatbeesSendMessage(collectionName) {
   }
 
   // get the answer from the service
-  const apiUrl = 'https://public.us-west-2.aws.chatbees.ai/docs/ask';
+  const apiUrl = 'https://' + aid + '.us-west-2.aws.chatbees.ai/docs/ask';
   jsonData = JSON.stringify({namespace_name: 'public', collection_name: collectionName, question: userInput});
   if (historyMessages.length > 0) {
     jsonData = JSON.stringify({namespace_name: 'public', collection_name: collectionName, question: userInput, history_messages: historyMessages});
@@ -93,7 +97,7 @@ function chatbeesSendMessage(collectionName) {
       if (historyMessages.length > maxMessages) {
           historyMessages = historyMessages.slice(-maxMessages);
       }
-      console.log(historyMessages);
+      //console.log(historyMessages);
   })
   .catch(error => {
       console.error('Error:', error);
@@ -111,3 +115,10 @@ function chatbeesSendMessage(collectionName) {
   document.getElementById('chatbeesUserInput').value = '';
 }
 
+// Send question when Enter key is pressed
+const userInput = document.getElementById('chatbeesUserInput');
+userInput.addEventListener("keyup", function (event) {
+    if (event.key == "Enter" && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
+        chatbeesSendMessage();
+    }
+});
