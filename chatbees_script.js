@@ -47,7 +47,16 @@ function chatbeesSendMessage() {
   userMsg.classList.add('chatbees-message', 'chatbees-user');
   chatArea.appendChild(userMsg);
 
+  // Display bot thinking
+  var thinkMsg = document.createElement('div');
+  thinkMsg.textContent = 'Bees are thinking...';
+  thinkMsg.classList.add('chatbees-message', 'chatbees-bot');
+  chatArea.appendChild(thinkMsg);
+
   if (collectionName == "collectionName") {
+	// remove the thinking message
+	chatArea.removeChild(thinkMsg);
+
     // Test bot, simply echo the userInput
     var botMsg = document.createElement('div');
     botMsg.textContent = "Test echo: " + userInput;
@@ -87,6 +96,9 @@ function chatbeesSendMessage() {
   })
   .then(response => response.json())
   .then(data => {
+	  // remove the thinking message
+	  chatArea.removeChild(thinkMsg);
+
       // Display the response in the chat area
       var botMsg = document.createElement('div');
       botMsg.textContent = data.answer;
