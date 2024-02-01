@@ -98,7 +98,7 @@ function chatbeesSendMessage() {
       if (response.ok) {
          return response.json();
       }
-      return Promise.reject(response);
+      return response.text().then(text => { throw new Error(text); });
   })
   .then(data => {
       // remove the thinking message
@@ -123,7 +123,7 @@ function chatbeesSendMessage() {
 
       // Display a generic message for error case
       var botMsg = document.createElement('div');
-      botMsg.textContent = "Something went wrong, please try again later";
+      botMsg.textContent = "Something went wrong: ".concat(error.message);
       botMsg.classList.add('chatbees-message', 'chatbees-bot');
       chatArea.appendChild(botMsg);
   });
