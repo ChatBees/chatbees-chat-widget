@@ -94,10 +94,15 @@ function chatbeesSendMessage() {
     },
     body: jsonData,
   })
-  .then(response => response.json())
+  .then((response) => {
+      if (response.ok) {
+         return response.json();
+      }
+      return Promise.reject(response);
+  })
   .then(data => {
-	  // remove the thinking message
-	  chatArea.removeChild(thinkMsg);
+      // remove the thinking message
+      chatArea.removeChild(thinkMsg);
 
       // Display the response in the chat area
       var botMsg = document.createElement('div');
@@ -113,9 +118,12 @@ function chatbeesSendMessage() {
   })
   .catch(error => {
       console.error('Error:', error);
-      // Display the error in the chat area
+      // remove the thinking message
+      chatArea.removeChild(thinkMsg);
+
+      // Display a generic message for error case
       var botMsg = document.createElement('div');
-      botMsg.textContent = error;
+      botMsg.textContent = "Something went wrong, please try again later";
       botMsg.classList.add('chatbees-message', 'chatbees-bot');
       chatArea.appendChild(botMsg);
   });
