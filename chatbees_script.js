@@ -38,7 +38,6 @@ function chatbeesSendMessage() {
 
   const aid = document.getElementById('chatbeesAccountID').value.trim();
   const collectionName = document.getElementById('chatbeesCollectionName').value.trim();
-  const namespaceName = document.getElementById('chatbeesNamespaceName').value.trim();
   console.log(aid, collectionName);
   
   const chatArea = document.getElementById('chatbeesChatArea');
@@ -80,15 +79,17 @@ function chatbeesSendMessage() {
 
   // get the answer from the service
   const apiUrl = 'https://' + aid + '.us-west-2.aws.chatbees.ai/docs/ask';
-  jsonData = JSON.stringify({namespace_name: namespaceName, collection_name: collectionName, question: userInput});
+  jsonData = JSON.stringify({namespace_name: 'public', collection_name: collectionName, question: userInput});
   if (historyMessages.length > 0) {
-    jsonData = JSON.stringify({namespace_name: namespaceName, collection_name: collectionName, question: userInput, history_messages: historyMessages});
+    jsonData = JSON.stringify({namespace_name: 'public', collection_name: collectionName, question: userInput, history_messages: historyMessages});
   }
 
   fetch(apiUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
+        // Private collection 
+	//'api-key': 'Replace with your API Key',
     },
     body: jsonData,
   })
