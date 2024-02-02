@@ -37,9 +37,9 @@ function chatbeesSendMessage() {
   }
 
   const aid = document.getElementById('chatbeesAccountID').value.trim();
-  const collectionName = document.getElementById('chatbeesCollectionName').value.trim();
   const namespaceName = document.getElementById('chatbeesNamespaceName').value.trim();
-  console.log(aid, collectionName);
+  const collectionName = document.getElementById('chatbeesCollectionName').value.trim();
+  //console.log(aid, namespaceName, collectionName);
   
   const chatArea = document.getElementById('chatbeesChatArea');
   // Display user's message

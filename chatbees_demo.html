@@ -35,8 +35,15 @@
       </div>
       <div class="chatbees-user-input-area">
 		<textarea id="chatbeesUserInput" placeholder="Type your message..."></textarea>
-		<!-- Please replace the chatbeesAccountID and chatbeesCollectionName with your account id and collection name. -->
+		<!--
+			Please replace the chatbeesAccountID and chatbeesCollectionName with your account id
+			and collection name. chatbeesNamespaceName is "public" by default currently, you can
+			change it when we support creating namespace.
+			Note: if the collection does not allow public read, please add your Api-Key to the
+			rest request in chatbees_script.js
+		-->
 		<input type="hidden" id="chatbeesAccountID" value="public">
+		<input type="hidden" id="chatbeesNamespaceName" value="public">
 		<input type="hidden" id="chatbeesCollectionName" value="collectionName">
 		<img src="chatbees_send_icon.svg" alt="Send" class="chatbees-send-icon" onclick="chatbeesSendMessage()">
       </div>
