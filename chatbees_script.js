@@ -87,10 +87,9 @@ function chatbeesSendMessage() {
   fetch(apiUrl, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      // Please replace the api-key with a valid API Key you created.
-	  // This is not required soon. Publishing a collection will be supported soon.
-	  'api-key': 'Replace with your API Key',
+      'Content-Type': 'application/json'
+        // If the collection does not allow public read, please add your api-key here.
+	//'api-key': 'Replace with your API Key',
     },
     body: jsonData,
   })
