@@ -88,7 +88,7 @@ function chatbeesSendMessage() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-        // Private collection 
+        // If the collection does not allow public read, please add your api-key here.
 	//'api-key': 'Replace with your API Key',
     },
     body: jsonData,
