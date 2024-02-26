@@ -1,17 +1,22 @@
-// Open chat popup when floating button is clicked
-document.getElementById('chatbeesFloatBtn').addEventListener('click', function() {
-  const chatPopup = document.getElementById('chatbeesPopup');
-  chatPopup.style.display = 'flex';
-
-  // Display hello message as the first message
-  chatArea = document.getElementById('chatbeesChatArea');
-  chatArea.innerHTML = '<div class="chatbees-message chatbees-bot">Hello! How can I assist you?</div>';
-});
-
 // Global chat history, a list of questions and answers.
 // Currently only the last 10 history questions and answers will be remembered.
 var historyMessages = [];
 var maxMessages = 10;
+
+// Open chat popup when floating button is clicked
+const floatBtn = document.getElementById('chatbeesFloatBtn')
+if (floatBtn != null) {
+  floatBtn.addEventListener('click', function() {
+    const chatPopup = document.getElementById('chatbeesPopup');
+    chatPopup.style.display = 'flex';
+
+    // Display hello message as the first message
+    chatArea = document.getElementById('chatbeesChatArea');
+    chatArea.innerHTML = '<div class="chatbees-message chatbees-bot">Hello! How can I assist you?</div>';
+
+    historyMessages = [];
+  });
+}
 
 // Clear all messages
 function chatbeesClearChat() {
