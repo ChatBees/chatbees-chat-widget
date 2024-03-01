@@ -4,7 +4,7 @@ var historyMessages = [];
 var maxMessages = 10;
 
 // Open chat popup when floating button is clicked
-const floatBtn = document.getElementById('chatbeesFloatBtn')
+const floatBtn = document.getElementById('chatbeesFloatBtn');
 if (floatBtn != null) {
   floatBtn.addEventListener('click', function() {
     const chatPopup = document.getElementById('chatbeesPopup');
@@ -44,7 +44,14 @@ function chatbeesSendMessage() {
   const aid = document.getElementById('chatbeesAccountID').value.trim();
   const namespaceName = document.getElementById('chatbeesNamespaceName').value.trim();
   const collectionName = document.getElementById('chatbeesCollectionName').value.trim();
-  //console.log(aid, namespaceName, collectionName);
+  if (aid == "" || collectionName == "") {
+    window.alert("Please set accountId and collection name");
+    return;
+  }
+  if (namespaceName == "") {
+    window.alert("The namespace name should not be empty");
+    return;
+  }
   
   const chatArea = document.getElementById('chatbeesChatArea');
   // Display user's message
