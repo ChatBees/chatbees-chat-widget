@@ -4,18 +4,15 @@ var historyMessages = [];
 var maxMessages = 10;
 
 // Open chat popup when floating button is clicked
-const floatBtn = document.getElementById('chatbeesFloatBtn')
-if (floatBtn != null) {
-  floatBtn.addEventListener('click', function() {
-    const chatPopup = document.getElementById('chatbeesPopup');
-    chatPopup.style.display = 'flex';
+function chatbeesShowPopup() {
+  const chatPopup = document.getElementById('chatbeesPopup');
+  chatPopup.style.display = 'flex';
 
-    // Display hello message as the first message
-    chatArea = document.getElementById('chatbeesChatArea');
-    chatArea.innerHTML = '<div class="chatbees-message chatbees-bot">Hello! How can I assist you?</div>';
+  // Display hello message as the first message
+  chatArea = document.getElementById('chatbeesChatArea');
+  chatArea.innerHTML = '<div class="chatbees-message chatbees-bot">Hello! How can I assist you?</div>';
 
-    historyMessages = [];
-  });
+  historyMessages = [];
 }
 
 // Clear all messages
@@ -44,8 +41,15 @@ function chatbeesSendMessage() {
   const aid = document.getElementById('chatbeesAccountID').value.trim();
   const namespaceName = document.getElementById('chatbeesNamespaceName').value.trim();
   const collectionName = document.getElementById('chatbeesCollectionName').value.trim();
-  //console.log(aid, namespaceName, collectionName);
-  
+  if (aid == "" || collectionName == "") {
+    window.alert("Please set accountId and collection name");
+    return;
+  }
+  if (namespaceName == "") {
+    window.alert("The namespace name should not be empty");
+    return;
+  }
+
   const chatArea = document.getElementById('chatbeesChatArea');
   // Display user's message
   var userMsg = document.createElement('div');
@@ -60,8 +64,8 @@ function chatbeesSendMessage() {
   chatArea.appendChild(thinkMsg);
 
   if (collectionName == "collectionName") {
-	// remove the thinking message
-	chatArea.removeChild(thinkMsg);
+    // remove the thinking message
+    chatArea.removeChild(thinkMsg);
 
     // Test bot, simply echo the userInput
     var botMsg = document.createElement('div');
@@ -93,44 +97,44 @@ function chatbeesSendMessage() {
   fetch(apiUrl, {
     method: 'POST',
     headers: {
+      // If the collection does not allow public read, please add your api-key here.
+      //'api-key': 'Replace with your API Key',
       'Content-Type': 'application/json'
-        // If the collection does not allow public read, please add your api-key here.
-	//'api-key': 'Replace with your API Key',
     },
     body: jsonData,
   })
   .then((response) => {
-      if (response.ok) {
-         return response.json();
-      }
-      return response.text().then(text => { throw new Error(text); });
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error(`status: ${response.status}, error: ${response.statusText}`);
   })
   .then(data => {
-      // remove the thinking message
-      chatArea.removeChild(thinkMsg);
+    // remove the thinking message
+    chatArea.removeChild(thinkMsg);
 
-      // Display the response in the chat area
-      var botMsg = document.createElement('div');
-      botMsg.textContent = data.answer;
-      botMsg.classList.add('chatbees-message', 'chatbees-bot');
-      chatArea.appendChild(botMsg);
-      // add to the historyMessages
-      historyMessages.push([userInput, data.answer]);
-      if (historyMessages.length > maxMessages) {
-          historyMessages = historyMessages.slice(-maxMessages);
-      }
-      //console.log(historyMessages);
+    // Display the response in the chat area
+    var botMsg = document.createElement('div');
+    botMsg.textContent = data.answer;
+    botMsg.classList.add('chatbees-message', 'chatbees-bot');
+    chatArea.appendChild(botMsg);
+    // add to the historyMessages
+    historyMessages.push([userInput, data.answer]);
+    if (historyMessages.length > maxMessages) {
+      historyMessages = historyMessages.slice(-maxMessages);
+    }
+    //console.log(historyMessages);
   })
   .catch(error => {
-      console.error('Error:', error);
-      // remove the thinking message
-      chatArea.removeChild(thinkMsg);
+    console.error('Error:', error);
+    // remove the thinking message
+    chatArea.removeChild(thinkMsg);
 
-      // Display a generic message for error case
-      var botMsg = document.createElement('div');
-      botMsg.textContent = "Something went wrong: ".concat(error.message);
-      botMsg.classList.add('chatbees-message', 'chatbees-bot');
-      chatArea.appendChild(botMsg);
+    // Display a generic message for error case
+    var botMsg = document.createElement('div');
+    botMsg.textContent = "Something went wrong: ".concat(error.message);
+    botMsg.classList.add('chatbees-message', 'chatbees-bot');
+    chatArea.appendChild(botMsg);
   });
 
   // Scroll chat area to the bottom
@@ -143,7 +147,7 @@ function chatbeesSendMessage() {
 // Send question when Enter key is pressed
 const userInput = document.getElementById('chatbeesUserInput');
 userInput.addEventListener("keyup", function (event) {
-    if (event.key == "Enter" && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
-        chatbeesSendMessage();
-    }
+  if (event.key == "Enter" && !event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey) {
+    chatbeesSendMessage();
+  }
 });
