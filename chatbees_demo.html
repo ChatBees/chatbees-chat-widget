@@ -32,8 +32,8 @@
     <div class="chatbees-popup" id="chatbeesPopup">
       <div class="chatbees-header bg-black p-2.5">
         <div class="chatbees-left-section">
-          <img src="chatbees_logo_favicon_white.svg" alt="Chat Logo" class="chatbees-logo mr-2">
-          <a href="https://www.chatbees.ai/pricing" target="_blank" style="color: white;"><strong>ChatBees</strong></a>
+          <img src="chatbees_logo_favicon_white.svg" alt="Chat Logo" class="chatbees-logo mr-2" id="chatbees-logo-img">
+          <a href="https://www.chatbees.ai/pricing" target="_blank" style="color: white;" id="chatbees-brand-name">ChatBees</a>
         </div>
         <div class="chatbees-right-section">
           <button id="chatbeesClearBtn" aria-label="Clear ChatBees Chat Message" class="w-8 h-8">
@@ -98,6 +98,9 @@
         <input type="hidden" id="chatbeesAccountID" value="public">
         <input type="hidden" id="chatbeesNamespaceName" value="public">
         <input type="hidden" id="chatbeesCollectionName" value="collectionName">
+        <input type="hidden" id="chatbeesLogoUrl" value="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/372_Weebly_logo-128.png">
+        <input type="hidden" id="chatbeesBrandName" value="Weebly">
+        <input type="hidden" id="chatbeesThinkingHint" value="Weebly is working">
         <button
             id="chatbeesSendMessageBtn"
             class="flex h-16 w-16 items-center justify-center rounded-md bg-primary text-white hover:text-gray-900 bg-black"

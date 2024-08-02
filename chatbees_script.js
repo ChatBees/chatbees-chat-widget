@@ -1,10 +1,13 @@
-(function () {
+(function() {
   const getElementById = (id) => document.getElementById(id);
 
-  const [aid, namespaceName, collectionName] = [
+  const [aid, namespaceName, collectionName, logoUrl, brandName, thinkingHint = "Bees are thinking..."] = [
     "chatbeesAccountID",
     "chatbeesNamespaceName",
     "chatbeesCollectionName",
+    "chatbeesLogoUrl",
+    "chatbeesBrandName",
+    "chatbeesThinkingHint"
   ]
     .map(getElementById)
     .map((element) => element?.value?.trim());
@@ -15,6 +18,14 @@
   if (!namespaceName) {
     window.alert("The namespace name should not be empty.");
     return;
+  }
+
+  if (logoUrl) {
+    getElementById("chatbees-logo-img").src = logoUrl;
+  }
+
+  if (brandName) {
+    getElementById("chatbees-brand-name").text = brandName;
   }
 
   const [
@@ -290,7 +301,7 @@
 
     const thinkMsg = document.createElement("div");
     thinkMsg.classList.add("chatbees-message", "chatbees-bot");
-    thinkMsg.innerHTML = `<span class="inline-flex items-center">${spinner}<span class="ml-2">Bees are thinking...</span></span>`;
+    thinkMsg.innerHTML = `<span class="inline-flex items-center">${spinner}<span class="ml-2">${thinkingHint}</span></span>`;
     chatAreaElement.appendChild(thinkMsg);
     chatAreaElement.scrollTop = chatAreaElement.scrollHeight;
 

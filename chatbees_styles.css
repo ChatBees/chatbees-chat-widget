@@ -72,6 +72,10 @@
   width: 40px; /* Adjust the width as needed */
   height: 40px; /* Adjust the height as needed */
 }
+
+#chatbees-brand-name {
+  font-weight: bold;
+}
 .chatbees-right-section {
   display: flex;
   align-items: center;
